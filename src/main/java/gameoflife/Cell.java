@@ -17,4 +17,8 @@ public class Cell {
     public boolean isDead() {
         return !alive;
     }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
 }

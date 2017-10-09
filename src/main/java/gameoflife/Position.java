@@ -20,4 +20,12 @@ public class Position {
         this.x = x;
         this.y = y;
     }
+
+    public static Position at(int x, int y) {
+        return new Position(x, y);
+    }
+
+    public Position plus(Position position) {
+        return Position.at(x + position.getX(), y + position.getY());
+    }
 }
