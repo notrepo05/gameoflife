@@ -12,11 +12,7 @@ public class GameOfLife {
     }
 
     public void run(int count) {
-        // board = dis render aint tdd'd out redo this
-        renderer.render(board);
-
         for (int i = 0; i < count; i++){
-            // board = simulator.calc.. is not ttd'd out. redo this!
             this.board = simulator.calculateNextGeneration(board);
             renderer.render(board);
         }

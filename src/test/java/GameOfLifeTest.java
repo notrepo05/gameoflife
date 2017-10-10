@@ -8,8 +8,12 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.io.IOException;
+
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GameOfLifeTest {
@@ -30,7 +34,7 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void when_GameOfLifeIsRanWithOneGen_thenOneGenerationIsSimulated() {
+    public void when_GameOfLifeIsRanWithOneGen_thenOneGenerationIsSimulated() throws IOException {
         subject.run(1);
 
         verify(simulator).calculateNextGeneration(board);
@@ -38,10 +42,10 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void when_GameOfLifeIsRanManyTimes_thenMAnyGenerationsAreSimulated() {
+    public void when_GameOfLifeIsRanManyTimes_thenMAnyGenerationsAreSimulated() throws IOException {
         subject.run(3);
 
-        verify(simulator, times(3)).calculateNextGeneration(board);
-        verify(renderer, times(3)).render(board);
+        verify(simulator, times(3)).calculateNextGeneration(any(Board.class));
+        verify(renderer, times(3)).render(any(Board.class));
     }
 }
